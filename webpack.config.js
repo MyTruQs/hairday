@@ -16,7 +16,11 @@ module.exports = {
             directory: path.join(__dirname, "dist"),
         },
         port: 3000,
-        open: true,
+        open: {
+            app: {
+                name: "firefox"
+            },
+        },
         liveReload: true,
     },
 
@@ -25,5 +29,14 @@ module.exports = {
             template: path.resolve(__dirname, "src", "index.html"),
             favicon: path.resolve("src", "assets", "scissors.svg")
         })
-    ]
+    ],
+
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"]
+            },
+        ]
+    }
 };
